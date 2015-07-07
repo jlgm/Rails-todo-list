@@ -5,6 +5,11 @@ Rails.application.routes.draw do
 
   root 'lists#index'
 
+  match 'show'=> 'lists#show', via: [:get, :post]
+  match 'new'=> 'lists#new', via: [:get, :post]
+
+  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
