@@ -8,6 +8,10 @@ class ListsController < ApplicationController
   end
 
   def new
+    lista = List.new
+    lista.name = params[:name]
+    lista.tipo = params[:tipo]
+    lista.save
   end
 
 end

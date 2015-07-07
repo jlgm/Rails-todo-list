@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150625222521) do
+ActiveRecord::Schema.define(version: 20150707183711) do
 
   create_table "lists", force: :cascade do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "tipo"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

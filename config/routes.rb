@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   match 'show'=> 'lists#show', via: [:get, :post]
   match 'new'=> 'lists#new', via: [:get, :post]
 
-  
+  post "lists/new"    => "lists#new"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
