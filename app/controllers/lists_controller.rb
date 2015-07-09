@@ -1,6 +1,7 @@
 class ListsController < ApplicationController
 
   def index
+    @lists = List.all
   end
 
   def show
@@ -8,10 +9,22 @@ class ListsController < ApplicationController
   end
 
   def new
-    lista = List.new
-    lista.name = params[:name]
-    lista.tipo = params[:tipo]
-    lista.save
+    @list = List.new
   end
 
+  def create
+    @list = List.new(list_permitted_params)
+    saved = @list.save
+      if saved
+        redirect_to lists_path
+      else
+        render :new
+      end
+  end
+
+  private
+
+  def list_permitted_params
+    params.require(:list).permit(:name, :tipo)
+  end
 end
