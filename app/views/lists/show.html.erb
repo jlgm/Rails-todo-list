@@ -2,24 +2,9 @@
 
 <table>
   <tr>
-    <th>Nome</th>
-    <th>Tipo</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Nome: <%= @list.name %></th>
+    <th>Tipo: <%= @list.tipo %></th>
   </tr>
-
-<% @lists.each do |list| %>
-  <tr>
-    <td><%= list.name %></td>
-    <td><%= list.tipo %></td>
-    <td><%= link_to "Show", list %></td>
-    <td><%= link_to "Edit", edit_list_path(list) %></td>
-    <td><%= link_to "Remove", list, method: :delete, data: { confirm: "Are you sure?" } %></td>
-  </tr>
-<% end %>
 </table>
 
 <br>
-
-<%= link_to "Nova Lista", new_list_path %>
