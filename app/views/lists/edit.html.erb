@@ -1,10 +1,1 @@
-<%= form_for @list do |form| %>
-  Novo nome: <%= form.text_field :name %><br />
-  Tipo : <%= form.text_field :tipo %><br /><br><br>
-  <%= form.submit %>
-<% end %>
-<% if @list.errors.any? %>
-  <% @list.errors.full_messages.each do |message| %>
-    <%= message %>
-  <% end %>
-<% end %>
+<%= render "form", list: @list, label_nome: "Novo nome" %>

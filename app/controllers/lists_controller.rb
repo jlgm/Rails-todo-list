@@ -1,7 +1,16 @@
 class ListsController < ApplicationController
 
+  before_action :authorize_user, except: [:index, :create, :new]
+
+  def authorize_user
+    @list = List.find(params[:id])
+    if @list.user != current_user and @list.tipo == "privada"
+      redirect_to lists_path
+    end
+  end
+
   def index
-    @lists = List.all
+    @lists = List.where(["user_id = ? OR tipo = ?", current_user, "publica"])
   end
 
   def show
@@ -13,7 +22,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.new(list_permitted_params)
+    @list = List.new(list_permitted_params.merge(user: current_user))
     saved = @list.save
       if saved
         redirect_to lists_path
