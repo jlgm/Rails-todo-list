@@ -1,17 +1,16 @@
 class ListsController < ApplicationController
 
-  before_action :verify_user, :authorize_user_visualization, except: [:index, :create, :new]
+  before_action :authorize_user, except: [:index, :create, :new]
 
-  def authorize_user_visualization
+  def authorize_user
     @list = List.find(params[:id])
-    if @list.user != current_user and @list.tipo == "privada"
-      redirect_to lists_path
-    end
-  end
+    action = params[:action]
 
-  def verify_user
-    @list = List.find(params[:id])
-    if @list.user != current_user
+    if action == "show"
+      if @list.tipo == "publica"
+        render :show
+      end
+    elsif @list.user != current_user
       redirect_to lists_path
     end
   end
