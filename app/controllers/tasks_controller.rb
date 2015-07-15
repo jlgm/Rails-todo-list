@@ -17,10 +17,9 @@ class TasksController < ApplicationController
   end
 
   def destroy
-   task = Task.find(params[:id])
-   task.destroy
-   list = List.find(params[:list_id])
-   redirect_to list_path(list)
+   @task = Task.find(params[:id])
+   @task.destroy
+   @list = List.find(params[:list_id])
   end
 
   def edit
