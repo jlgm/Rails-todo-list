@@ -4,9 +4,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :lists
-
-  resources :tasks
+  resources :lists do
+    resources :tasks, only: [:create, :destroy]
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
