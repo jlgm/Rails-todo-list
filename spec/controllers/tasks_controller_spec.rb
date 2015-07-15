@@ -6,8 +6,8 @@ RSpec.describe TasksController, type: :controller do
     let(:list) { FactoryGirl.create(:list) }
     let(:attributes) { { task: { name: "tarefa_teste" }, list_id: list } }
     it "should be success" do
-      post :create, attributes
-      expect(response).to redirect_to list_path(list)
+      xhr :post, :create, attributes
+      expect(response).to be_success
     end
   end
 

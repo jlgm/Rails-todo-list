@@ -6,5 +6,10 @@
     <th>Tipo: <%= @list.tipo %></th>
   </tr>
 </table>
-
+<br><br>
+<table class="tasks-table">
+  <%= render @list.tasks %>
+</table>
+<br><br><br>
+<%= render "tasks/form", list: @list, task: @task %>
 <br>
