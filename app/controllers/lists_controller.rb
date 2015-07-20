@@ -7,7 +7,7 @@ class ListsController < ApplicationController
     action = params[:action]
 
     if action == "show"
-      if @list.tipo != "publica"
+      if @list.tipo != "publica" and @list.user != current_user
         redirect_to lists_path
       end
     elsif @list.user != current_user
