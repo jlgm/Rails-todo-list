@@ -1,0 +1,11 @@
+<%= form_for [list, task], remote: true, html: { class: "task-form" } do |form| %>
+  Nome :
+  <%= form.text_field :name %><br />
+  Tipo : <%= form.select :done, [true, false] %><br /><br><br>
+  <%= form.submit %>
+<% end %>
+<% if task.errors.any? %>
+  <% task.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>

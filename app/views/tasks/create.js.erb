@@ -1,0 +1,8 @@
+<% if @task.valid? %>
+  task = "<%= j render 'tasks/task', task: @task %>";
+  $(".tasks-table").append(task);
+
+<% else %>
+  form = "<%= j render 'tasks/form', list: @list, task: @task %>";
+  $(".task-form").replaceWith(form);
+<% end %>

@@ -7,8 +7,8 @@ class ListsController < ApplicationController
     action = params[:action]
 
     if action == "show"
-      if @list.tipo == "publica"
-        render :show
+      if @list.tipo != "publica" and @list.user != current_user
+        redirect_to lists_path
       end
     elsif @list.user != current_user
       redirect_to lists_path
@@ -21,6 +21,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params["id"])
+    @task = Task.new
   end
 
   def new
