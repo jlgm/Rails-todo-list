@@ -17,6 +17,11 @@ class ListsController < ApplicationController
 
   def index
     @lists = List.where(["user_id = ? OR tipo = ?", current_user, "publica"])
+    favorites = Favorite.where("user_id = ?", current_user)
+    @favorites = []
+    favorites.each do |f|
+      @favorites.append(List.find(f.list_id))
+    end
   end
 
   def show

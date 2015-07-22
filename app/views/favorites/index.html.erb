@@ -1,0 +1,9 @@
+<h1>Favorite#index</h1>
+<% @lists.each do |list| %>
+  <tr>
+    <td><%= list.name %></td>
+    <td><%= list.tipo %></td>
+    <td><%= link_to "Show", list %></td>
+  </tr>
+  <br>
+<% end %>

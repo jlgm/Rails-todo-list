@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
 
-  root 'lists#index'
 
   devise_for :users
 
+  root 'lists#index'
+
   resources :lists do
     resources :tasks, only: [:create, :destroy, :index, :new, :edit]
+    resources :favorites, only: [:create, :destroy]
   end
+
+  resources :favorites, only: :index
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

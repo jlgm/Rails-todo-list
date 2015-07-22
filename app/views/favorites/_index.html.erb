@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Tipo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<% @favorites.each do |list| %>
+  <tr>
+    <td><%= list.name %></td>
+    <td><%= list.tipo %></td>
+    <td><%= link_to "Show", list %></td>
+    <td><%= button_to "-", list_favorite_path(list.id, current_user.id), method: :delete %></td>
+  </tr>
+<% end %>
+</table>
